@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
 
 import { NavItem } from 'reactstrap';
 
-const SelectLanguage = (props) => {
+const SelectLanguage = ({langs, loc}) => {
+  const shownLanguage = langs.find(lang => lang.link !== loc);
   return ( 
-    props.langs.map(lang =>
-      //think about adding selected prop
-        <NavItem>
-            <Link to={lang.link} key={lang.langKey}>{lang.langKey}</Link>
+        <NavItem >
+            <a 
+              href={shownLanguage.link}
+              key={shownLanguage.langKey}
+              className="text-uppercase p-3"
+            >
+              {shownLanguage.langKey.slice(0,2)}
+            </a>
         </NavItem>
     )
-  );
 };
 
 SelectLanguage.propTypes = {

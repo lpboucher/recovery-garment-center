@@ -1,101 +1,47 @@
 const _ = require(`lodash`)
-const Promise = require(`bluebird`)
 const path = require(`path`)
-const slash = require(`slash`)
+const languages = require('./src/data/languages')
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-  return new Promise((resolve, reject) => {
-    graphql(
-      `
-        {
-          allContentfulProduct(limit: 1000) {
-            edges {
-              node {
-                id
-                contentful_id
-                node_locale
-              }
-            }
-          }
-        }
-      `
-    )
-      .then(result => {
-        if (result.errors) {
-          reject(result.errors)
-        }
+  const { createPage } = actions;
+  console.log(languages);
 
-        // Create Product pages
-        const productTemplate = path.resolve(`./src/templates/product.js`)
-        // We want to create a detailed page for each
-        // product node. We'll just use the Contentful id for the slug.
-        _.each(result.data.allContentfulProduct.edges, edge => {
-          // We need a common ID to cycle between locales.
-          const commonId = edge.node.contentful_id
-          // Gatsby uses Redux to manage its internal state.
-          // Plugins and sites can use functions like "createPage"
-          // to interact with Gatsby.
-          createPage({
-            // Each page is required to have a `path` as well
-            // as a template component. The `context` is
-            // optional but is often necessary so the template
-            // can query data specific to each page.
-            path: `/${edge.node.node_locale}/products/${commonId}/`,
-            component: slash(productTemplate),
-            context: {
-              id: edge.node.id,
-              contentful_id:  edge.node.contentful_id,
-            },
-          })
-        })
-      })
-      .then(() => {
-        graphql(
-          `
+  const locales = languages.langs;
+
+  locales.forEach((locale) => {
+    const prefix = locale;
+    createPage({
+      path: `/${prefix}`,
+      component: path.resolve('./src/templates/index.js'),
+      context: { locale },
+    });
+  });
+}
+
+exports.onCreateWebpackConfig = ({
+  actions,
+  stage,
+  loaders
+}) => {
+    if (stage === "build-html") {
+      actions.setWebpackConfig({
+        externals: {
+          jQuery: 'jquery',
+        },
+        module: {
+          rules: [
             {
-              allContentfulCategory(limit: 1000) {
-                edges {
-                  node {
-                    id
-                    contentful_id
-                    node_locale
-                  }
-                }
-              }
-            }
-          `
-        ).then(result => {
-          if (result.errors) {
-            reject(result.errors)
-          }
-
-          // Create Category pages
-          const categoryTemplate = path.resolve(`./src/templates/category.js`)
-          // We want to create a detailed page for each
-          // category node. We'll just use the Contentful id for the slug.
-          _.each(result.data.allContentfulCategory.edges, edge => {
-            // We need a common ID to cycle between locales.
-            const commonId = edge.node.contentful_id
-            // Gatsby uses Redux to manage its internal state.
-            // Plugins and sites can use functions like "createPage"
-            // to interact with Gatsby.
-            createPage({
-              // Each page is required to have a `path` as well
-              // as a template component. The `context` is
-              // optional but is often necessary so the template
-              // can query data specific to each page.
-              path: `/${edge.node.node_locale}/categories/${commonId}/`,
-              component: slash(categoryTemplate),
-              context: {
-                id: edge.node.id,
-                contentful_id:  edge.node.contentful_id,
-              },
-            })
-          })
-
-          resolve()
-        })
+              test: /react-scroll-to-element/,
+              use: loaders.null(),
+            },
+          ],
+        },
       })
-  })
+    } else {
+      actions.setWebpackConfig({
+        externals: {
+          jQuery: 'jquery',
+        },
+      })
+    }
 }

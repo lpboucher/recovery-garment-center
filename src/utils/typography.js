@@ -9,6 +9,23 @@ const theme = {
   baseLineHeight: 1.45,
   blockMarginBottom: 0.75,
   scaleRatio: 2.15,
+  headerFontFamily: ['Montserrat', 'sans-serif'],
+  bodyFontFamily: ['Montserrat', 'sans-serif'],
+  googleFonts: [
+    {
+      name: 'Montserrat',
+      styles: [
+        '400',
+        '400i',
+        '500',
+        '500i',
+        '600',
+        '600i',
+        '700',
+        '700i',
+      ],
+    },
+  ],
   overrideStyles: ({ rhythm, scale }, options) => {
     return {
       "h1,h2,h3,h4": {
@@ -18,6 +35,7 @@ const theme = {
         // Make baseFontSize on mobile 17px.
         html: {
           fontSize: `${(17 / 16) * 100}%`,
+          fontFamily: 'Montserrat'
         },
       },
       [MOBILE_MEDIA_QUERY]: {
@@ -30,7 +48,7 @@ const theme = {
   },
 }
 
-const typography = new Typography(theme)
+const typography = new Typography(theme);
 
 // Back out the below once Typography is upgraded for es6
 export default typography
@@ -38,3 +56,5 @@ export default typography
 export const rhythm = typography.rhythm
 export const scale = typography.scale
 export const options = typography.options
+
+typography.injectStyles();

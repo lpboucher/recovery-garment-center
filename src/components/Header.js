@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
-import Link from 'gatsby-link';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import ScrollToSection from './ScrollToTop';
 import SelectLanguage from './SelectLanguage';
 
 import {
@@ -9,23 +11,36 @@ import {
   NavItem,
   Button } from 'reactstrap';
 
-const Header = (props) => (
+const Header = ({logo, bouton, languages, currentLocation}) => (
   <Fragment>
-
-<Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Recovery Garment Center</NavbarBrand>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link to="/">
-                  <Button>
-                    Contact Us
-                  </Button>
-                </Link>
-              </NavItem>
-              <SelectLanguage langs={props.langs} />
-            </Nav>
-        </Navbar>
+    <Navbar id="top-navbar" color="light" light expand="md">
+      <NavbarBrand style={{minWidth: '200px'}}>
+        <Img fluid={logo.fluid}/>
+      </NavbarBrand>
+        <Nav className="w-100 d-flex justify-content-end align-items-center" navbar>
+          <NavItem className="px-2">
+              <Button className="p-3 text-uppercase" style={{backgroundColor: '#0074B4', borderColor: '#0074B4'}}>
+                <ScrollToSection loc='footer-contact'>
+                  {bouton}
+                </ScrollToSection>
+              </Button>
+          </NavItem>
+          <SelectLanguage loc={currentLocation} langs={languages} />
+        </Nav>
+    </Navbar>
   </Fragment>
 )
+
+export const query = graphql`
+  fragment HeaderItems on ContentfulHeader {
+    bouton
+      logo {
+        id
+        fluid(maxWidth: 800) {
+            ...GatsbyContentfulFluid
+      }
+    }
+  }
+`;
 
 export default Header;

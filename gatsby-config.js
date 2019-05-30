@@ -2,7 +2,7 @@ const languages = require('./src/data/languages');
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby with Contentful`,
+    title: `Recovery Garment Center`,
     languages
   },
   plugins: [
@@ -18,8 +18,10 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `rocybtov1ozk`,
-        accessToken: `6f35edf0db39085e9b9c19bd92943e4519c77e72c852d961968665f1324bfc94`,
+        //rocybtov1ozk
+        spaceId: `bq2lmxap5jih`,
+        //6f35edf0db39085e9b9c19bd92943e4519c77e72c852d961968665f1324bfc94
+        accessToken: `jnKOqWjiZB9QLvyI8rzU8HqgaC_dNFpfN_CenfqSaTU`,
       },
     },
     {
@@ -29,5 +31,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
   ],
 }
