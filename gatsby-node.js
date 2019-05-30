@@ -25,9 +25,6 @@ exports.onCreateWebpackConfig = ({
 }) => {
     if (stage === "build-html") {
       actions.setWebpackConfig({
-        externals: {
-          jQuery: 'jquery',
-        },
         module: {
           rules: [
             {
@@ -35,12 +32,6 @@ exports.onCreateWebpackConfig = ({
               use: loaders.null(),
             },
           ],
-        },
-      })
-    } else {
-      actions.setWebpackConfig({
-        externals: {
-          jQuery: 'jquery',
         },
       })
     }

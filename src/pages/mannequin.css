@@ -1,0 +1,28 @@
+.st0 {
+    fill: none;
+}
+
+.st0:hover {
+    opacity: 0.7;
+}
+
+.light-part {
+    fill: #4A4A4A;
+    opacity: 0.5;
+}
+
+.blue-part {
+    fill: #0074B4
+}
+
+.grey-part {
+    fill: #4A4A4A
+}
+
+.dark-part {
+    fill: #2A3849
+}
+
+.red-part {
+    fill: #EE1D24
+}
