@@ -1,5 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import $ from 'jquery';
+if (typeof window !== `undefined`) {
+  window.jQuery = $;
+  window.$ = $;
+}
 
 import Layout from '../components/layout';
 

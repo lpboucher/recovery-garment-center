@@ -5,6 +5,10 @@ import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import 'intl';
 import $ from 'jquery';
+if (typeof window !== `undefined`) {
+  window.jQuery = $;
+  window.$ = $;
+}
 
 import fr from 'react-intl/locale-data/fr';
 import 'intl/locale-data/jsonp/fr-CA';
@@ -33,13 +37,6 @@ class TemplateWrapper extends Component {
     this.langsMenu = getLangs(langs, this.langKey, getUrlForLang(this.homeLink, url));
   }
 
-  componentDidMount() {
-    if (typeof window !== `undefined`) {
-      window.jQuery = $;
-      window.$ = $;
-    }
-  }
-
   render() {
     const {header, footer, ...mainData} = this.props.data;
     return (
@@ -54,7 +51,10 @@ class TemplateWrapper extends Component {
               { name: 'keywords', content: 'sample, something' },
             ]}
           >
-            
+            <script
+                    src="https://code.jquery.com/jquery-3.4.1.min.js"
+                    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                    crossorigin="anonymous"></script>
             <script src="/front-parts.js" type="text/javascript"></script>
             <script src="/interact-script.js" type="text/javascript"></script>
             <link rel="stylesheet" type="text/css" href="/illustration-style.css" />
