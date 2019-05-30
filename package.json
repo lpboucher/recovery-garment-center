@@ -23,6 +23,7 @@
     "lodash": "^4.17.10",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
+    "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.0",
     "react-intl": "^2.7.2",
     "react-scroll-to-element": "^0.2.0",
