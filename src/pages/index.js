@@ -14,13 +14,11 @@ class RedirectIndex extends React.PureComponent {
       const langKey = getUserLangKey(langs, defaultLangKey);
       const homeUrl = withPrefix(`/${langKey}/`);
 
-      navigate(homeUrl);
+      window.___history.replace(homeUrl);
     }
   }
 
   render() {
-    // It's recommended to add your SEO solution in here for bots
-    // eg. https://github.com/ahimsayogajp/ahimsayoga-gatsby/blob/master/src/pages/index.js#L22
     return (<div />);
   }
 }
