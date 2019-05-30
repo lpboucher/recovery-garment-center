@@ -1,7 +1,6 @@
 const languages = require('./src/data/languages');
 
 module.exports = {
-  pathPrefix: "/",
   siteMetadata: {
     title: `Recovery Garment Center`,
     languages
