@@ -15,6 +15,8 @@ import 'intl/locale-data/jsonp/fr-CA';
 import en from 'react-intl/locale-data/en';
 import 'intl/locale-data/jsonp/en-CA';
 
+import '../pages/bootstrap.min.css';
+
 import Header from '../components/Header';
 import MainPage from './MainPage';
 import Footer from './Footer';
