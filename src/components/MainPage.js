@@ -9,7 +9,7 @@ const MainPage = ({data, currentLocation}) => {
     const { info, bodyParts, jumbo } = data;
     return (
         <Fragment>
-            <Jumbo data={jumbo}/>
+            <Jumbo id="top-navbar" data={jumbo}/>
             <InfoGrid data={info}/>
             <BodyNavigation loc={currentLocation} data={bodyParts}/>
             { bodyParts.edges.map(item => 

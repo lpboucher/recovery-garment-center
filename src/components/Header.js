@@ -13,7 +13,7 @@ import {
 
 const Header = ({logo, bouton, languages, currentLocation}) => (
   <Fragment>
-    <Navbar id="top-navbar" color="light" light expand="md" className="fixed-top">
+    <Navbar color="light" light expand="md" className="fixed-top">
       <NavbarBrand className="px-3" style={{minWidth: '300px'}}>
         <Img fluid={logo.fluid}/>
       </NavbarBrand>
