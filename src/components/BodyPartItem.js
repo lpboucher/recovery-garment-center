@@ -9,7 +9,6 @@ import {
   Carousel,
   CarouselItem,
   CarouselIndicators,
-  CarouselControl,
 } from 'reactstrap';
 
 class BodyPartItem extends Component {
