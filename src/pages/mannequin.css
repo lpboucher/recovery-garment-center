@@ -9,20 +9,25 @@
 .light-part {
     fill: #4A4A4A;
     opacity: 0.5;
+    cursor: pointer;
 }
 
 .blue-part {
-    fill: #0074B4
+    fill: #0074B4;
+    cursor: pointer;
 }
 
 .grey-part {
-    fill: #4A4A4A
+    fill: #4A4A4A;
+    cursor: pointer;
 }
 
 .dark-part {
-    fill: #2A3849
+    fill: #2A3849;
+    cursor: pointer;
 }
 
 .red-part {
-    fill: #EE1D24
+    fill: #EE1D24;
+    cursor: pointer;
 }

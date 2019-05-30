@@ -21,8 +21,12 @@ export const query = graphql`
     header: contentfulHeader(node_locale: { eq: $locale }) {
       ...HeaderItems
     }
-    jumbo: contentfulJumbotron(node_locale: { eq: $locale }) {
-      ...JumboItem
+    jumbo: allContentfulJumbotron(filter: {node_locale: { eq: $locale } }) {
+      edges {
+        node {
+          ...JumboItems
+        }
+    }
     }
     info: allContentfulGenerale(filter: {node_locale: { eq: $locale } }) {
         edges {

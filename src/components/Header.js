@@ -13,8 +13,8 @@ import {
 
 const Header = ({logo, bouton, languages, currentLocation}) => (
   <Fragment>
-    <Navbar id="top-navbar" color="light" light expand="md">
-      <NavbarBrand style={{minWidth: '200px'}}>
+    <Navbar id="top-navbar" color="light" light expand="md" className="fixed-top">
+      <NavbarBrand className="px-3" style={{minWidth: '300px'}}>
         <Img fluid={logo.fluid}/>
       </NavbarBrand>
         <Nav className="w-100 d-flex justify-content-end align-items-center" navbar>
@@ -34,7 +34,7 @@ const Header = ({logo, bouton, languages, currentLocation}) => (
 export const query = graphql`
   fragment HeaderItems on ContentfulHeader {
     bouton
-      logo {
+    logo {
         id
         fluid(maxWidth: 800) {
             ...GatsbyContentfulFluid
