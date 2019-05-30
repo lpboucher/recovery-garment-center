@@ -49,12 +49,9 @@ class TemplateWrapper extends Component {
             ]}
           >
             
-            <script src="../front-parts.js" type="text/javascript"></script>
-            <script src="../back-parts.js" type="text/javascript"></script>
-            <script src="../front-spots.js" type="text/javascript"></script>
-            <script src="../back-spots.js" type="text/javascript"></script>
-            <script src="../interact-script.js" type="text/javascript"></script>
-            <link rel="stylesheet" type="text/css" href="../illustration-style.css" />
+            <script src="/front-parts.js" type="text/javascript"></script>
+            <script src="/interact-script.js" type="text/javascript"></script>
+            <link rel="stylesheet" type="text/css" href="/illustration-style.css" />
           </Helmet>
           <Header currentLocation={this.props.location.pathname} languages={this.langsMenu} {...header}/>
           <MainPage currentLocation={this.props.location.pathname} data={mainData}/>
