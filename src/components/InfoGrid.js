@@ -10,7 +10,7 @@ import {
 const InfoGrid = ({data}) => {
     const infoItems = data.edges;
     return (
-        <Container fluid className="bg-light">
+        <Container fluid id="top-navbar" className="bg-light">
             <Row className="px-4 pt-4 d-flex">
             {infoItems.map(item => 
                 <InfoGridItem 
