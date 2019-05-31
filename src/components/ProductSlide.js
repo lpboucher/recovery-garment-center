@@ -29,7 +29,6 @@ class ProductSlide extends Component {
 
     render() {
     const { nom, caracteristiques, image } = this.props.item;
-    const isOpen = this.state.collapseVideo || this.state.collapseFeatures;
     const caracToShow = caracteristiques.slice(0,6);
     const caracToToggle = caracteristiques.slice(6);
         return (
@@ -54,7 +53,7 @@ class ProductSlide extends Component {
                                             className="px-4 mx-2"
                                             onClick={this.toggleFeatures}
                                         >
-                                            {isOpen ? '-' : '+'}
+                                            {this.state.collapseFeatures ? '-' : '+'}
                                         </a>
                                     </div>
                                     <Collapse isOpen={this.state.collapseFeatures}>
@@ -74,8 +73,8 @@ class ProductSlide extends Component {
                         </Col>
                     </Row>
                     <Collapse isOpen={this.state.collapseVideo}>
-                        <Container fluid>
-                            Test
+                        <Container fluid className="pt-5">
+                            <iframe width="650" height="486" src={this.props.video} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         </Container>
                     </Collapse>
                 </Container>
@@ -89,7 +88,7 @@ export const query = graphql`
     id
     nom
     image {
-        fluid(maxWidth: 800) {
+        fluid(maxWidth: 650) {
           ...GatsbyContentfulFluid
         }
     }

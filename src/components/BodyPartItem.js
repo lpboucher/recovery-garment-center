@@ -44,7 +44,7 @@ class BodyPartItem extends Component {
 
   render() {
     const { activeIndex } = this.state;
-    const { id, nom, slug, produits } = this.props;
+    const { id, nom, slug, produits, video } = this.props;
 
     const allProducts = produits.map((item) => {
       return (
@@ -53,7 +53,7 @@ class BodyPartItem extends Component {
           onExited={this.onExited}
           key={item.id}
         >
-          <ProductSlide item={item}/>
+          <ProductSlide video={video} item={item}/>
         </CarouselItem>
       );
     });
@@ -83,8 +83,8 @@ class BodyPartItem extends Component {
         >
           <CarouselIndicators className="d-none" items={produits} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
           {allProducts}
-        <a onClick={this.previous} className="position-absolute" style={{color: '#0074B4', fontSize: '200%', fontWeight: 'bold',top: '50%', left: '0', cursor: 'pointer'}}>&#x3c;</a>
-        <a onClick={this.next} className="position-absolute" style={{color: '#0074B4', fontSize: '200%', fontWeight: 'bold', top: '50%', right: '0', cursor: 'pointer'}}>&#x3e;</a>
+        <a onClick={this.previous} className="position-absolute" style={{color: '#0074B4', fontSize: '200%', fontWeight: 'bold', marginTop: '20%', top: '0', left: '0', cursor: 'pointer'}}>&#x3c;</a>
+        <a onClick={this.next} className="position-absolute" style={{color: '#0074B4', fontSize: '200%', fontWeight: 'bold', marginTop: '20%', top: '0', right: '0', cursor: 'pointer'}}>&#x3e;</a>
         </Carousel>
         </Container>
       </Fragment>
@@ -98,6 +98,7 @@ export const query = graphql`
     nom
     slug
     ordre
+    video
     produits {
         ...ProductItems
     }
