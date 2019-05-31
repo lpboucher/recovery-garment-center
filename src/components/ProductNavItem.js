@@ -12,7 +12,7 @@ const ProductNavItem = ({id, index, text, navigate, active}) => {
         <a 
             key={id}
             onClick={() => navigate(index)}
-            className="mx-5"
+            className="mx-4"
             style={navStyle}
         >
         {text}
