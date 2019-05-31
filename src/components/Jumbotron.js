@@ -1,40 +1,96 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql } from 'gatsby';
-import BackgroundImage from 'gatsby-background-image';
+import Img from 'gatsby-image';
 
 import {
-    Jumbotron,
-    Container,
-    UncontrolledCarousel } from 'reactstrap';
+    Carousel,
+    CarouselItem,
+    CarouselControl,
+    CarouselIndicators,
+    CarouselCaption } from 'reactstrap';
 
-const Jumbo = ({data}) => {
-    //const { text, cover } = data;
-    const slides = data.edges.map(slide => {
+class Jumbo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { activeIndex: 0 };
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+    this.goToIndex = this.goToIndex.bind(this);
+    this.onExiting = this.onExiting.bind(this);
+    this.onExited = this.onExited.bind(this);
+  }
+
+  onExiting() {
+    this.animating = true;
+  }
+
+  onExited() {
+    this.animating = false;
+  }
+
+  next() {
+    if (this.animating) return;
+    const nextIndex = this.state.activeIndex === this.props.data.edges.length - 1 ? 0 : this.state.activeIndex + 1;
+    this.setState({ activeIndex: nextIndex });
+  }
+
+  previous() {
+    if (this.animating) return;
+    const nextIndex = this.state.activeIndex === 0 ? this.props.data.edges.length - 1 : this.state.activeIndex - 1;
+    this.setState({ activeIndex: nextIndex });
+  }
+
+  goToIndex(newIndex) {
+    if (this.animating) return;
+    this.setState({ activeIndex: newIndex });
+  }
+
+  render() {
+    const { activeIndex } = this.state;
+    const items = this.props.data.edges.map(slide => {
         return {
-            src: slide.node.cover.fluid.src,
-            header: slide.node.text
+            id: slide.node.id,
+            src: slide.node.cover,
+            altText: slide.node.text,
+            caption: slide.node.text
         }
-    })
+    });
+    const slides = items.map(item => {
+      return (
+        <CarouselItem
+          onExiting={this.onExiting}
+          onExited={this.onExited}
+          key={item.id}
+        >
+          <Img fluid={item.src.fluid}/>
+          <div className="w-75 text-center text-white" style={{position: 'absolute', top: '40%', marginLeft: '12.5%'}}>
+            <p className="display-4" style={{fontWeight: 'bold'}}>{item.caption}</p>
+          </div>
+        </CarouselItem>
+      );
+    });
+
     return (
-        <div>
-            {/*<Jumbotron fluid className="mb-0 p-0" style={{height: '600px'}}>
-                <Container fluid className="h-100 p-0 text-center">
-                    <BackgroundImage className="h-100 d-flex align-items-center" fluid={cover.fluid}>
-                        <h3 className="display-4 w-75 m-auto text-white" style={{fontWeight: 'bolder', fontSize: '300%', lineHeight: '2.0'}}>{text}</h3>
-                    </BackgroundImage>
-                </Container>
-            </Jumbotron>
-    */}
-            <UncontrolledCarousel autoPlay={false} interval={0} items={slides} />
-        </div>
+      <Carousel
+        activeIndex={activeIndex}
+        next={this.next}
+        previous={this.previous}
+      >
+        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        {slides}
+        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+        <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+      </Carousel>
     );
-};
+  }
+}
 
 export const query = graphql`
     fragment JumboItems on ContentfulJumbotron {
+        id
         text 
         cover {
-            fluid(maxWidth: 800) {
+            fluid(maxWidth: 1600) {
                 ...GatsbyContentfulFluid
             }
         }

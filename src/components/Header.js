@@ -36,7 +36,7 @@ export const query = graphql`
     bouton
     logo {
         id
-        fluid(maxWidth: 800) {
+        fluid(maxWidth: 300) {
             ...GatsbyContentfulFluid
       }
     }
