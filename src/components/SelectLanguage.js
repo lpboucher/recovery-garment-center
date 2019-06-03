@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { NavItem } from 'reactstrap';
 
 const SelectLanguage = ({langs, loc}) => {
-  const shownLanguage = langs.find(lang => lang.link !== loc);
+  const shownLanguage = langs.find(lang => lang.langKey !== loc);
   return ( 
         <NavItem >
             <Link 

@@ -5,13 +5,13 @@ import InfoGrid from './InfoGrid';
 import BodyNavigation from './BodyNavigation';
 import BodyPartItem from './BodyPartItem';
 
-const MainPage = ({data, currentLocation}) => {
+const MainPage = ({data, locale}) => {
     const { info, bodyParts, jumbo } = data;
     return (
         <Fragment>
             <Jumbo data={jumbo}/>
             <InfoGrid data={info}/>
-            <BodyNavigation loc={currentLocation} data={bodyParts}/>
+            <BodyNavigation loc={locale} data={bodyParts}/>
             { bodyParts.edges.map(item => 
                 <BodyPartItem 
                     key={item.node.id}

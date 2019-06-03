@@ -47,8 +47,8 @@ class TemplateWrapper extends Component {
           >
             <link rel="stylesheet" type="text/css" href="/illustration-style.css" />
           </Helmet>
-          <Header currentLocation={this.props.location.pathname} languages={this.langsMenu} {...header}/>
-          <MainPage currentLocation={this.props.location.pathname} data={mainData}/>
+          <Header locale={this.langKey} languages={this.langsMenu} {...header}/>
+          <MainPage locale={this.langKey} data={mainData}/>
           <Footer data={footer}/>
           <ToTop />
         </div>

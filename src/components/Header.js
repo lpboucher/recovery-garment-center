@@ -11,7 +11,7 @@ import {
   NavItem,
   Button } from 'reactstrap';
 
-const Header = ({logo, bouton, languages, currentLocation}) => (
+const Header = ({logo, bouton, languages, locale}) => (
   <Fragment>
     <Navbar color="light" light expand="md" className="fixed-top">
       <NavbarBrand className="px-3" style={{minWidth: '300px'}}>
@@ -25,7 +25,7 @@ const Header = ({logo, bouton, languages, currentLocation}) => (
                 </ScrollToSection>
               </Button>
           </NavItem>
-          <SelectLanguage loc={currentLocation} langs={languages} />
+          <SelectLanguage loc={locale} langs={languages} />
         </Nav>
     </Navbar>
   </Fragment>
