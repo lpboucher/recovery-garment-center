@@ -10,28 +10,32 @@ html, body {
     opacity: 0.7;
 }
 
-.light-part {
+#frt_1, #frt_17 {
     fill: #4A4A4A;
     opacity: 0.5;
     cursor: pointer;
 }
 
-.blue-part {
+#frt_9, #frt_25,
+#frt_12, #frt_13,
+#frt_28, #frt_29 {
     fill: #0074B4;
     cursor: pointer;
 }
 
-.grey-part {
+#frt_10, #frt_11,
+#frt_26, #frt_27 {
     fill: #4A4A4A;
     cursor: pointer;
 }
 
-.dark-part {
+#frt_14, #frt_30 {
     fill: #2A3849;
     cursor: pointer;
 }
 
-.red-part {
+#frt_15, #frt_16,
+#frt_31, #frt_32 {
     fill: #EE1D24;
     cursor: pointer;
 }
