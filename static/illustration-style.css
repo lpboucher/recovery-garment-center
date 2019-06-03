@@ -94,3 +94,41 @@
 		height:720px;
 	}
 }
+
+.st0 {
+    fill: none;
+}
+
+.st0:hover {
+    opacity: 0.7;
+}
+
+#frt_1, #frt_17 {
+    fill: #4A4A4A;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#frt_9, #frt_25,
+#frt_12, #frt_13,
+#frt_28, #frt_29 {
+    fill: #0074B4;
+    cursor: pointer;
+}
+
+#frt_10, #frt_11,
+#frt_26, #frt_27 {
+    fill: #4A4A4A;
+    cursor: pointer;
+}
+
+#frt_14, #frt_30 {
+    fill: #2A3849;
+    cursor: pointer;
+}
+
+#frt_15, #frt_16,
+#frt_31, #frt_32 {
+    fill: #EE1D24;
+    cursor: pointer;
+}
