@@ -5,11 +5,14 @@ const ScrollToSection = ({loc, children}) => {
     return (
         <Fragment>
             {typeof window !== 'undefined'
-            && Scroll
-            && 
+            && Scroll ?
             <Scroll type="id" element={loc}>
                 {children}
-            </Scroll>}
+            </Scroll>
+            : 
+            <div>
+                {children}
+            </div>}
         </Fragment>
     );
 };
