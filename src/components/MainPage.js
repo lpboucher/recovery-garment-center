@@ -15,6 +15,7 @@ const MainPage = ({data, locale}) => {
             { bodyParts.edges.map(item => 
                 <BodyPartItem 
                     key={item.node.id}
+                    order={data.orderForms}
                     {...item.node}/>
             )}
         </Fragment>

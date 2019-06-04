@@ -59,6 +59,18 @@ export const query = graphql`
         }
       }
     }
+    orderForms: allContentfulFormulaireOrder(filter: {node_locale: { eq: $locale } }) {
+      edges {
+        node {
+          region
+          formulaire {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
     footer: allContentfulFooter(filter: {node_locale: { eq: $locale } }) {
         edges {
             node {

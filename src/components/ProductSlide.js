@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { graphql } from 'gatsby';
-import BackgroundImage from 'gatsby-background-image';
+import Img from 'gatsby-image';
 
 import ProductFeatureItem from './ProductFeatureItem';
 
@@ -47,11 +47,11 @@ class ProductSlide extends Component {
             <div className="p-5" id="hands">
                 <Container fluid className="text-center p-5 bg-white">
                     <Row>
-                        <Col className="d-flex flex-column" style={{minHeight: '540px'}}>
+                        <Col className="d-flex flex-column" style={{maxHeight: '540px'}}>
                             <h3 className="mb-4">{nom}</h3>
-                            <BackgroundImage className="flex-grow-1" fluid={image.fluid} />
+                            <Img fluid={image.fluid} />
                         </Col>
-                        <Col className="d-flex flex-column">
+                        <Col className="d-flex flex-column" style={{minHeight: '540px'}}>
                             {caracToShow.map(car => 
                                 <Fragment key={car.id}>
                                     <ProductFeatureItem {...car} />
@@ -91,7 +91,12 @@ class ProductSlide extends Component {
                     </Collapse>
                     <Collapse isOpen={this.state.collapseOrder}>
                         <Container fluid className="pt-5">
-                            <p>Order</p>
+                            {this.props.oForms.edges.map((form, index) => 
+                            <Fragment key={`${form.node.region}-${index}`}>
+                                {index !== 0 ? <span>|</span> : null}
+                                <a className="mx-4" href={form.node.formulaire.file.url} target="_blank">{form.node.region}</a>
+                            </Fragment>
+                            )}
                         </Container>
                     </Collapse>
                     <Collapse isOpen={this.state.collapseMeasure}>
