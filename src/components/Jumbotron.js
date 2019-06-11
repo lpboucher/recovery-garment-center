@@ -6,8 +6,7 @@ import {
     Carousel,
     CarouselItem,
     CarouselControl,
-    CarouselIndicators,
-    CarouselCaption } from 'reactstrap';
+    CarouselIndicators } from 'reactstrap';
 
 class Jumbo extends Component {
   constructor(props) {
