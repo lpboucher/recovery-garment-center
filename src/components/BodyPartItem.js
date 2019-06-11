@@ -44,7 +44,7 @@ class BodyPartItem extends Component {
 
   render() {
     const { activeIndex } = this.state;
-    const { id, nom, slug, produits, video, order } = this.props;
+    const { id, nom, slug, produits, video, order, loc } = this.props;
 
     const allProducts = produits.map((item) => {
       return (
@@ -53,7 +53,7 @@ class BodyPartItem extends Component {
           onExited={this.onExited}
           key={item.id}
         >
-          <ProductSlide video={video} item={item} oForms={order}/>
+          <ProductSlide loc={loc} video={video} item={item} oForms={order}/>
         </CarouselItem>
       );
     });

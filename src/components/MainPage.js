@@ -16,6 +16,7 @@ const MainPage = ({data, locale}) => {
                 <BodyPartItem 
                     key={item.node.id}
                     order={data.orderForms}
+                    loc={locale}
                     {...item.node}/>
             )}
         </Fragment>

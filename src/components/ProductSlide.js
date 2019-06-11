@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import ProductFeatureItem from './ProductFeatureItem';
+import { buttonText } from '../data/translations';
 
 import {
     Container,
@@ -15,19 +16,14 @@ class ProductSlide extends Component {
     constructor() {
         super();
         this.toggleVideo = this.toggleVideo.bind(this);
-        this.toggleFeatures = this.toggleFeatures.bind(this);
         this.toggleOrder = this.toggleOrder.bind(this);
         this.toggleMeasure = this.toggleMeasure.bind(this);
-        this.state = { collapseVideo: false, collapseFeatures: false, collapseOrder: false, collapseMeasure: false };
+        this.state = { collapseVideo: false, collapseOrder: false, collapseMeasure: false };
     }
 
     //need to refactor into single multi-purpose function
     toggleVideo() {
         this.setState(state => ({ collapseVideo: !state.collapseVideo }));
-    }
-    
-    toggleFeatures() {
-        this.setState(state => ({ collapseFeatures: !state.collapseFeatures }));
     }
 
     toggleOrder() {
@@ -41,6 +37,7 @@ class ProductSlide extends Component {
 
     render() {
     const { nom, caracteristiques, image } = this.props.item;
+    const { loc } = this.props;
     const caracToShow = caracteristiques.slice(0,6);
     const caracToToggle = caracteristiques.slice(6);
         return (
@@ -78,9 +75,9 @@ class ProductSlide extends Component {
                                 </Fragment>
                                 : null}
                             <div className="flex-grow-1  my-2 d-flex justify-content-start align-items-end">
-                                <Button style={{backgroundColor: '#0074B4', borderColor: '#0074B4'}} className="rounded-0 px-3 mx-1" onClick={this.toggleVideo}>Measurement video</Button>
-                                <Button style={{backgroundColor: '#4A4A4A', borderColor: '#4A4A4A'}} className="rounded-0 px-3 mx-1" onClick={this.toggleMeasure}>Measurement form</Button>
-                                <Button style={{backgroundColor: '#2A3849', borderColor: '#2A3849'}} className="rounded-0 px-3 mx-1" onClick={this.toggleOrder}>Order form</Button>
+                                <Button style={{backgroundColor: '#0074B4', borderColor: '#0074B4'}} className="rounded-0 px-3 mx-1" onClick={this.toggleVideo}>{loc === "fr-CA" ? buttonText.video.fr : buttonText.video.en}</Button>
+                                <Button style={{backgroundColor: '#4A4A4A', borderColor: '#4A4A4A'}} className="rounded-0 px-3 mx-1" onClick={this.toggleMeasure}>{loc === "fr-CA" ? buttonText.measurement.fr : buttonText.measurement.en}</Button>
+                                <Button style={{backgroundColor: '#2A3849', borderColor: '#2A3849'}} className="rounded-0 px-3 mx-1" onClick={this.toggleOrder}>{loc === "fr-CA" ? buttonText.order.fr : buttonText.order.en}</Button>
                             </div>
                         </Col>
                     </Row>
