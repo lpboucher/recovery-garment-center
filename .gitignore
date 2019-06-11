@@ -1,11 +1,11 @@
 .DS_Store
 npm-debug.log
 .hz
-.env
+.env.production
 .vscode/
 .cache/
 node_modules/
 .gatsby-context.js
 .intermediate-representation/
-.env
+.env.development
 public/

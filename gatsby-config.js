@@ -1,4 +1,7 @@
 const languages = require('./src/data/languages');
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 module.exports = {
   siteMetadata: {
@@ -18,10 +21,8 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        //rocybtov1ozk
-        spaceId: `bq2lmxap5jih`,
-        //6f35edf0db39085e9b9c19bd92943e4519c77e72c852d961968665f1324bfc94
-        accessToken: `jnKOqWjiZB9QLvyI8rzU8HqgaC_dNFpfN_CenfqSaTU`,
+        spaceId: `${process.env.CONTENTFUL_SPACE_ID}`,
+        accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
       },
     },
     {
