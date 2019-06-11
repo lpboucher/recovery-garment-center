@@ -89,8 +89,8 @@ export const query = graphql`
         id
         text 
         cover {
-            fluid(maxWidth: 1600) {
-                ...GatsbyContentfulFluid
+            fluid(quality: 100, maxWidth: 1600) {
+                ...GatsbyContentfulFluid_withWebp
             }
         }
     }

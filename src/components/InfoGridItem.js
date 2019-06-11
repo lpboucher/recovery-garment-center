@@ -33,8 +33,8 @@ export const query = graphql`
         description
     }
     icone {
-        fluid (maxWidth: 100) {
-            ...GatsbyContentfulFluid
+        fluid (quality: 100, maxWidth: 100) {
+            ...GatsbyContentfulFluid_withWebp
         }
     }
   }
