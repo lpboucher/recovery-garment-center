@@ -11,7 +11,7 @@ const FooterItem = ({title, description, order, size}) => {
         md={{size: size[2], order: order[2]}}
         lg={{size: size[3], order: order[3]}}
         xl={{size: size[4], order: order[4]}}
-        className="text-center text-white">
+        className="mb-5 text-center text-white">
             <h5 style={{fontWeight: 'bold'}} className="mb-5 text-uppercase">{title}</h5>
             {description.content.map((item, index) =>
               <p className="mb-1" key={`${item.content[0].nodeType}-${index}`}>{item.content[0].value}</p>
