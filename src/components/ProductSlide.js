@@ -19,7 +19,6 @@ class ProductSlide extends Component {
         this.state = { 
             features: false,
             video: false,
-            measurement: false,
             order: false 
         };
     }
@@ -30,7 +29,7 @@ class ProductSlide extends Component {
 
     render() {
     const { nom, caracteristiques, image } = this.props.item;
-    const { loc } = this.props;
+    const { mForm, oForms, video, loc } = this.props;
     const caracToShow = caracteristiques.slice(0,6);
     const caracToToggle = caracteristiques.slice(6);
         return (
@@ -70,29 +69,26 @@ class ProductSlide extends Component {
                                 : null}
                             <div className="flex-grow-1  my-2 d-flex justify-content-start align-items-end">
                                 <Button style={{backgroundColor: '#0074B4', borderColor: '#0074B4'}} className="rounded-0 px-3 mx-1" id="video" onClick={this.handleToggle}>{loc === "fr-CA" ? buttonText.video.fr : buttonText.video.en}</Button>
-                                <Button style={{backgroundColor: '#4A4A4A', borderColor: '#4A4A4A'}} className="rounded-0 px-3 mx-1" id="measurement" onClick={this.handleToggle}>{loc === "fr-CA" ? buttonText.measurement.fr : buttonText.measurement.en}</Button>
+                                <a href={mForm.file.url} target="_blank">
+                                    <Button style={{backgroundColor: '#4A4A4A', borderColor: '#4A4A4A'}} className="rounded-0 px-3 mx-1">{loc === "fr-CA" ? buttonText.measurement.fr : buttonText.measurement.en}</Button>
+                                </a>
                                 <Button style={{backgroundColor: '#2A3849', borderColor: '#2A3849'}} className="rounded-0 px-3 mx-1" id="order" onClick={this.handleToggle}>{loc === "fr-CA" ? buttonText.order.fr : buttonText.order.en}</Button>
                             </div>
                         </Col>
                     </Row>
                     <Collapse isOpen={this.state.video}>
                         <Container fluid className="pt-5">
-                            <iframe width="650" height="486" src={this.props.video} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            <iframe width="650" height="486" src={video} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         </Container>
                     </Collapse>
                     <Collapse isOpen={this.state.order}>
                         <Container fluid className="pt-5">
-                            {this.props.oForms.edges.map((form, index) => 
+                            {oForms.edges.map((form, index) => 
                             <Fragment key={`${form.node.region}-${index}`}>
                                 {index !== 0 ? <span>|</span> : null}
                                 <a className="mx-4" href={form.node.formulaire.file.url} target="_blank">{form.node.region}</a>
                             </Fragment>
                             )}
-                        </Container>
-                    </Collapse>
-                    <Collapse isOpen={this.state.measurement}>
-                        <Container fluid className="pt-5">
-                            <p>Measure</p>
                         </Container>
                     </Collapse>
                 </Container>
