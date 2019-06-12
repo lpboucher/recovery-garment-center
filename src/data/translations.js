@@ -12,7 +12,7 @@ export const navText = {
 export const buttonText = {
     video: {
         en: 'Measurement Video',
-        fr: 'Video de mesures',
+        fr: 'Vidéo de mesures',
     },
     measurement: {
         en: 'Measurement Form',
