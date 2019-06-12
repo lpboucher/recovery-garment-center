@@ -15,25 +15,18 @@ import {
 class ProductSlide extends Component {
     constructor() {
         super();
-        this.toggleVideo = this.toggleVideo.bind(this);
-        this.toggleOrder = this.toggleOrder.bind(this);
-        this.toggleMeasure = this.toggleMeasure.bind(this);
-        this.state = { collapseVideo: false, collapseOrder: false, collapseMeasure: false };
+        this.handleToggle = this.handleToggle.bind(this);
+        this.state = { 
+            features: false,
+            video: false,
+            measurement: false,
+            order: false 
+        };
     }
 
-    //need to refactor into single multi-purpose function
-    toggleVideo() {
-        this.setState(state => ({ collapseVideo: !state.collapseVideo }));
+    handleToggle(e) {
+        this.setState({[e.target.id]: !this.state[e.target.id]});
     }
-
-    toggleOrder() {
-        this.setState(state => ({ collapseOrder: !state.collapseOrder }));
-    }
-
-    toggleMeasure() {
-        this.setState(state => ({ collapseMeasure: !state.collapseMeasure }));
-    }
-
 
     render() {
     const { nom, caracteristiques, image } = this.props.item;
@@ -60,12 +53,13 @@ class ProductSlide extends Component {
                                         <a 
                                             style={{fontSize: '250%', color: '#0074B4', cursor: 'pointer'}}
                                             className="px-4 mx-2"
-                                            onClick={this.toggleFeatures}
+                                            onClick={this.handleToggle}
+                                            id="features"
                                         >
-                                            {this.state.collapseFeatures ? '-' : '+'}
+                                            {this.state.features ? '-' : '+'}
                                         </a>
                                     </div>
-                                    <Collapse isOpen={this.state.collapseFeatures}>
+                                    <Collapse isOpen={this.state.features}>
                                         {caracToToggle.map(car => 
                                             <Fragment key={car.id}>
                                                 <ProductFeatureItem {...car} />
@@ -75,18 +69,18 @@ class ProductSlide extends Component {
                                 </Fragment>
                                 : null}
                             <div className="flex-grow-1  my-2 d-flex justify-content-start align-items-end">
-                                <Button style={{backgroundColor: '#0074B4', borderColor: '#0074B4'}} className="rounded-0 px-3 mx-1" onClick={this.toggleVideo}>{loc === "fr-CA" ? buttonText.video.fr : buttonText.video.en}</Button>
-                                <Button style={{backgroundColor: '#4A4A4A', borderColor: '#4A4A4A'}} className="rounded-0 px-3 mx-1" onClick={this.toggleMeasure}>{loc === "fr-CA" ? buttonText.measurement.fr : buttonText.measurement.en}</Button>
-                                <Button style={{backgroundColor: '#2A3849', borderColor: '#2A3849'}} className="rounded-0 px-3 mx-1" onClick={this.toggleOrder}>{loc === "fr-CA" ? buttonText.order.fr : buttonText.order.en}</Button>
+                                <Button style={{backgroundColor: '#0074B4', borderColor: '#0074B4'}} className="rounded-0 px-3 mx-1" id="video" onClick={this.handleToggle}>{loc === "fr-CA" ? buttonText.video.fr : buttonText.video.en}</Button>
+                                <Button style={{backgroundColor: '#4A4A4A', borderColor: '#4A4A4A'}} className="rounded-0 px-3 mx-1" id="measurement" onClick={this.handleToggle}>{loc === "fr-CA" ? buttonText.measurement.fr : buttonText.measurement.en}</Button>
+                                <Button style={{backgroundColor: '#2A3849', borderColor: '#2A3849'}} className="rounded-0 px-3 mx-1" id="order" onClick={this.handleToggle}>{loc === "fr-CA" ? buttonText.order.fr : buttonText.order.en}</Button>
                             </div>
                         </Col>
                     </Row>
-                    <Collapse isOpen={this.state.collapseVideo}>
+                    <Collapse isOpen={this.state.video}>
                         <Container fluid className="pt-5">
                             <iframe width="650" height="486" src={this.props.video} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         </Container>
                     </Collapse>
-                    <Collapse isOpen={this.state.collapseOrder}>
+                    <Collapse isOpen={this.state.order}>
                         <Container fluid className="pt-5">
                             {this.props.oForms.edges.map((form, index) => 
                             <Fragment key={`${form.node.region}-${index}`}>
@@ -96,7 +90,7 @@ class ProductSlide extends Component {
                             )}
                         </Container>
                     </Collapse>
-                    <Collapse isOpen={this.state.collapseMeasure}>
+                    <Collapse isOpen={this.state.measurement}>
                         <Container fluid className="pt-5">
                             <p>Measure</p>
                         </Container>
