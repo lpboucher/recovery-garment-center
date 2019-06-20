@@ -9,7 +9,7 @@ import { Container } from 'reactstrap';
 const BodyNavigation = ({data, loc}) => {
     const navs = data.edges;
     return (
-        <Container fluid className="p-5 text-center">
+        <Container fluid className="d-none d-md-block p-5 text-center">
             <h1 className="text-uppercase">{loc === "fr-CA" ? navText.heading.fr : navText.heading.en}</h1>
             <p>{loc === "fr-CA" ? navText.sub.fr : navText.sub.en}</p>
             { /* to be deleted, now as a placeholder if client wants to keep

@@ -33,7 +33,7 @@ class ProductSlide extends Component {
     const caracToShow = caracteristiques.slice(0,6);
     const caracToToggle = caracteristiques.slice(6);
         return (
-            <div className="p-5" id="hands">
+            <div className="p-5">
                 <Container fluid className="text-center p-5 bg-white">
                     <Row>
                         <Col className="d-flex flex-column" style={{maxHeight: '540px'}}>

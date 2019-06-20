@@ -11,7 +11,7 @@ import {
 
 const InfoGridItem = ({nom, description, icone}) => {
     return (
-        <Col className="p-4" xs="6">
+        <Col className="p-4" md="12" lg="6">
             <Card className="h-100 border-0 text-center">
                 <div className="m-auto pt-2" style={{width: '100px', height: 'auto'}}>
                     <Img className="w-100" fluid={icone.fluid}/>

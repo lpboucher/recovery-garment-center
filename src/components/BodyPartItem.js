@@ -65,7 +65,7 @@ class BodyPartItem extends Component {
 
     return (
       <Fragment>
-        <Container fluid id={slug} className="px-5 pt-5 text-center bg-light">
+        <Container fluid id={slug} className="d-none d-md-block px-5 pt-5 text-center bg-light">
         <h3 className="display-5 text-uppercase mb-4" style={{fontWeight: 'bold', color: '#0074B4'}}>{nom}</h3>
         {produits.map((item, index) => 
           <Fragment key={`${item.id}-${index}`}>

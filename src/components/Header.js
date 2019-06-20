@@ -11,10 +11,12 @@ import {
   NavItem,
   Button } from 'reactstrap';
 
+import styles from "./header.module.css"
+
 const Header = ({logo, bouton, languages, locale}) => (
   <Fragment>
     <Navbar color="light" light expand="md" className="fixed-top">
-      <NavbarBrand className="px-3" style={{minWidth: '300px'}}>
+      <NavbarBrand className={`${styles.brand} px-3`}>
         <Img fluid={logo.fluid}/>
       </NavbarBrand>
         <Nav className="w-100 d-flex justify-content-end align-items-center" navbar>
