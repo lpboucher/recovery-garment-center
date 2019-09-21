@@ -1,0 +1,13 @@
+# These rules will change if you change your site’s custom domains or HTTPS settings
+
+# Redirect domain aliases to primary domain
+https://recoverygarmentcenter.ca/* https://recoverygarmentcentre.ca/:splat 301!
+https://recoverygarmentcenter.com/* https://recoverygarmentcentre.ca/:splat 301!
+https://recoverygarmentcenter.net/* https://recoverygarmentcentre.ca/:splat 301!
+https://recoverygarment.com/* https://recoverygarmentcentre.ca/:splat 301!
+https://recoverygarment.ca/* https://recoverygarmentcentre.ca/:splat 301!
+https://recovery-garment.com/* https://recoverygarmentcentre.ca/:splat 301!
+https://recovery-garment.ca/* https://recoverygarmentcentre.ca/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://nifty-almeida-154dad.netlify.com/* https://recoverygarmentcentre.ca/:splat 301!
